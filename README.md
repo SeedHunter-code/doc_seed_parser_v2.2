@@ -1,37 +1,89 @@
-Searches for phrases and private keys by pictures (searches for QR codes in them, recognizes them and pulls them out if there is a key or phrase), also searches for phrases and private keys of ether by doc docx xls pdf files.
+# 📜 Doc Seed Parser v2.2
 
-After the phrase is found, several addresses of all kinds of cryptocurrencies are generated and this is written to the logs folder
+## 🔍 Description
+This program searches for **phrases and private keys** inside various document formats (`doc`, `docx`, `xls`, `pdf`) and images (extracting **QR codes**). After detecting a phrase, it **generates multiple cryptocurrency addresses** and logs them in a dedicated folder.
 
+---
 
-Installation start 
+## 🚀 Installation Guide
 
-1.It is necessary to download and install python from the site https://www.python.org/ of the version not lower than 3.8 
-2.At the beginning of the Python installation, select the checkboxes "Install Launcher for all users" and "Add Python3.8 to patch" 
-3.At the end of the installation select "Disable Patch length limit" 
-4.Install build tools https://visualstudio.microsoft.com/visual-cpp-build-tools/ https://prnt.sc/XUQAJLvWtrU- 
-5.After completing the above points, you need to run the installation of the python libraries "install_libs"
+### 1️⃣ Install Python
+Download and install **Python** (version **3.8 or higher**) from the official website:  
+🔗 [Python Download](https://www.python.org/)
 
+During installation:
+- ✅ **Check** "Install Launcher for all users"
+- ✅ **Check** "Add Python3.8 to PATH"
+- ✅ **Select** "Disable Path length limit" at the end of the installation.
 
+### 2️⃣ Install Build Tools  
+Download and install **Visual C++ Build Tools**:  
+🔗 [Visual C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)  
 
-Let's start setting up the script doc_seed_parser_v2.2.py. All settings are here.
+📷 Screenshot Guide:  
+![Install Guide](https://prnt.sc/XUQAJLvWtrU-)
 
+### 3️⃣ Install Required Libraries
+Run the following command to install dependencies:
+```sh
+pip install -r requirements.txt
+```
 
-SOURCE_DIR = 'd:/__dd2/' The path to the logs is indicated here. If you use this program on Windows, you need to use such slashes /
+---
 
+## ⚙️ Configuration
 
-PARCE_ETH=False - enables or disables (if set to False) parsing of ether private keys. If you are going to enable this, set up exclusion files and folders, because there will be a lot of garbage to collect
+All settings are stored inside **`doc_seed_parser_v2.2.py`**.
 
+### 🔹 **Specify the path to logs**
+```python
+SOURCE_DIR = 'd:/__dd2/'
+```
+📌 **Windows users**: Use `/` instead of `\` in paths.
 
-BAD_DIRS=[ 'ololololz' ] Bad folders (if you often come across a folder with some kind of garbage, then it can be blacklisted and apache with that name will not be scanned).
+### 🔹 **Enable/Disable Ethereum private key parsing**
+```python
+PARCE_ETH = False
+```
+If enabled (`True`), **set up exclusion files and folders** to prevent collecting excessive data.
 
+### 🔹 **Blacklist unwanted folders**
+```python
+BAD_DIRS = ['ololololz']
+```
+Files inside these folders will **not** be scanned.
 
-BAD_FILES=[ 'ololololo' ] Bad files (if you often come across files with some kind of garbage, then they can be blacklisted and files with that name will not be scanned)
+### 🔹 **Blacklist unwanted files**
+```python
+BAD_FILES = ['ololololo']
+```
+These filenames will be **ignored**.
 
+### 🔹 **Define seed phrase lengths**
+```python
+WORDS_CHAIN_SIZES = {12, 15, 18, 24}
+```
+It is recommended to keep **all supported values**.
 
-WORDS_CHAIN_SIZES = {12, 15, 18, 24} Here you can specify the length of the phrases to be searched. I advise you to leave all supported
+### 🔹 **Filter out duplicate phrases**
+```python
+EXWORDS = 2
+```
+Phrases with **more than 2 repeated words** will be skipped.
 
+---
 
-EXWORDS=2 The filter is necessary so that only unique phrases are displayed (all phrases where more than 2 words are repeated will be skipped, such phrases do not exist, I advise you not to change)
+## ▶️ Running the Script
 
+To run the script **easily**, use `Run.bat`:
+1. Open `Run.bat` in a text editor.
+2. Locate the following line:
+   ```bat
+   cd C:\Users\administrator\Desktop\seed_parser_v2.2
+   ```
+3. Replace the path with the **folder containing the script**.
+4. **Double-click** `Run.bat` to execute the script.
 
-Once configured, you can start running. Run.bat will make things easier. In the line cd C:\Users\khuram\Desktop[By SeedHunter]seed_parser paste the link to the folder with the script. by clicking on run.bat run the script
+---
+
+✅ **Done!** The program will now search for phrases and generate addresses automatically. 🚀  
