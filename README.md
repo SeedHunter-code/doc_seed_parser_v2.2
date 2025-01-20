@@ -26,7 +26,7 @@ Download and install **Visual C++ Build Tools**:
 ### 3️⃣ Install Required Libraries
 Run the following command to install dependencies:
 ```sh
-pip install -r requirements.txt
+install_libs.cmd
 ```
 
 ---
